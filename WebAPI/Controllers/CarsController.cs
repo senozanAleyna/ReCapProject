@@ -98,6 +98,38 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcarsbybrandidwithdetails")]
+        public IActionResult GetCarsByBrandWithDetails(int brandId)
+        {
+            var result = _carService.GetCarsByBrandIdWithDetails(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
+        [HttpGet("getcarsbycoloridwithdetails")]
+        public IActionResult GetCarsByColorWithDetails(int colorId)
+        {
+            var result = _carService.GetCarsByColorIdWithDetails(colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        
+
+        [HttpGet("getcarsbyfilteridwithdetails")]
+        public IActionResult GetCarsByFilterWithDetails(int brandId, int colorId)
+        {
+            var result = _carService.GetCarsByFilterWithDetails(brandId,colorId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }
