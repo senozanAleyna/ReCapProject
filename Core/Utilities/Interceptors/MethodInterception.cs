@@ -8,14 +8,16 @@ namespace Core.Utilities.Interceptors
         //invocation dediğimiz bizim metotlarımız
         //kodlarımı try catch içine yazmadım burada bir kere kullanmış oldum 
         //burası butun metodların çatısı
+
         protected virtual void OnBefore(IInvocation invocation) { }
         protected virtual void OnAfter(IInvocation invocation) { }
-        protected virtual void OnException(IInvocation invocation, System.Exception e) { }
+        protected virtual void OnExpection(IInvocation invocation, System.Exception e) { }
         protected virtual void OnSuccess(IInvocation invocation) { }
+
         public override void Intercept(IInvocation invocation)
         {
             var isSuccess = true;
-            OnBefore(invocation);//metodddan önce çalışması
+            OnBefore(invocation);
             try
             {
                 invocation.Proceed();
@@ -23,7 +25,7 @@ namespace Core.Utilities.Interceptors
             catch (Exception e)
             {
                 isSuccess = false;
-                OnException(invocation, e);
+                OnExpection(invocation, e);
                 throw;
             }
             finally

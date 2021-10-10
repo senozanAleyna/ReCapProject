@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         [ValidationAspect(typeof(CarImageValidator))]
         [CacheRemoveAspect("ICarImageService.Get")]
-        [SecuredOperation("carimage.add,admin")]
+     
         public IResult Add(IFormFile file, CarImage carImage)
         {
             IResult result = BusinessRules.Run(CheckIfCarImageLimitExceeded(carImage.CarId));
